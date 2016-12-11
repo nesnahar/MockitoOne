@@ -5,34 +5,34 @@ import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import edu.utah.mockito.one.ICalculator;
+import edu.utah.mockito.one.Iface;
 import static org.mockito.Mockito.*;
 
 public class CalculatorServiceTests {
-	public CalculatorService calculatorService;
+	public SomeService SomeService;
 
 	/**
 	 * @throws java.lang.Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
-		ICalculator icalc = mock(ICalculator.class);
-		when(icalc.add(1, 2)).thenReturn(3);
-		calculatorService = new CalculatorService();
-		calculatorService.setIcalc(icalc);
+		Iface iface = mock(SomeInterface.class);
+		when(iface.add(1, 2)).thenReturn(3);
+		SomeService = new SomeService();
+		SomeService.setIface(iface);
 	}
 	@Test
 	public void testGetInstance()
 	{
-		Assert.assertNotNull(calculatorService.getIcalc()) ;
+		Assert.assertNotNull(SomeService.getIcalc()) ;
 	}
 
 	@Test
-	public void testAddInts()
+	public void testSomeMethod()
 	{
 		int x = 1;
 		int y = 2;
-		Assert.assertEquals(calculatorService.addInts(x, y), 3);
+		Assert.assertEquals(SomeService.someMethod(x, y), 3);
 	}
 
 }
